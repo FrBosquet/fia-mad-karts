@@ -12,12 +12,13 @@ export type RacerStats = {
   }>
 }
 
-type Race = {
+export type Race = {
   date: string
   track: string
-  loacation: string
+  location: string
   positions: string[]
   fastlap: string
+  image: string
 }
 
 const poinstByPosition = [25, 18, 16, 12, 10, 8, 6, 4, 2, 1]

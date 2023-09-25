@@ -1,8 +1,11 @@
 'use client';
 
 import { Navbar } from 'flowbite-react';
+import { usePathname } from 'next/navigation';
 
 export default function DefaultNavbar() {
+  const pathname = usePathname()
+
   return (
     <Navbar
       fluid
@@ -22,21 +25,17 @@ export default function DefaultNavbar() {
       <Navbar.Toggle />
       <Navbar.Collapse>
         <Navbar.Link
-          active
-          href="#"
+          active={pathname === '/'}
+          href="/"
         >
           <p>
             Home
           </p>
         </Navbar.Link>
-        <Navbar.Link href="#">
-          Services
-        </Navbar.Link>
-        <Navbar.Link href="#">
-          Pricing
-        </Navbar.Link>
-        <Navbar.Link href="#">
-          Contact
+        <Navbar.Link active={
+          pathname === '/races'
+        } href="/races">
+          Carreras
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
