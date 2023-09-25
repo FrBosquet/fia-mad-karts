@@ -1,7 +1,7 @@
 
 import { RacerStats, getRacers, getRaces } from './_utils';
 
-const Row = ({ racer, name, even }: { racer: RacerStats, name: string, even: true }) => {
+const Row = ({ racer, name, even }: { racer: RacerStats, name: string, even: boolean }) => {
   const { tracks, points, fastlaps } = racer
 
   return <div className={`p-2 flex justify-between uppercase gap-4 ${even ? 'bg-gray-400/20' : 'bg-gray-700/20'}`}>
