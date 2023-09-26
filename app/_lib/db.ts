@@ -73,7 +73,7 @@ export const getRacers = (races: Race[]) => {
     })
   })
 
-  return racers
+  return racers as Record<string, RacerStats>
 }
 
 export type Driver = {
@@ -81,6 +81,19 @@ export type Driver = {
   job: string
   alias: string
   description: string[]
+}
+
+export const getDriverStats = (target: string) => {
+  const races = getRaces()
+  const driversStats = getRacers(races)
+
+  for (const driver in driversStats) {
+    if (driver === target) {
+      return driversStats[driver]
+    }
+  }
+
+  throw new Error('Driver stats not found')
 }
 
 export const getDrivers = () => {
