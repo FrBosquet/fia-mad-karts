@@ -83,6 +83,16 @@ export type Driver = {
   description: string[]
 }
 
+export const getDrivers = () => {
+  const driverFiles = readdirSync(path.join(process.cwd(), DRIVERS))
+
+  const drivers = driverFiles.map((filename) => {
+    return JSON.parse(readFileSync(path.join(process.cwd(), DRIVERS, filename), 'utf8'))
+  })
+
+  return drivers as Driver[]
+}
+
 export const getDriverProfile = (name: string) => {
   const driver = readFileSync(path.join(process.cwd(), DRIVERS, `${name}.json`), 'utf-8')
 

@@ -27,7 +27,12 @@ export default function DefaultNavbar() {
           </p>
         </Navbar.Link>
         <Navbar.Link active={
-          pathname === '/races'
+          pathname.includes('/drivers')
+        } href="/drivers">
+          Pilotos
+        </Navbar.Link>
+        <Navbar.Link active={
+          pathname.includes('/races')
         } href="/races">
           Carreras
         </Navbar.Link>
