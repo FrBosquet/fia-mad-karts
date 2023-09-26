@@ -1,39 +1,22 @@
-import { readFileSync } from "fs";
-import path from "path";
+import { getDriverProfile } from "@/app/_lib/db";
 
 export default function Races({ params: { driver: paramsDriverSlug } }: { params: { driver: string } }) {
-  const driver = readFileSync(path.join(process.cwd(), 'app/_data/drivers', `${paramsDriverSlug}.json`), 'utf-8')
+  const driver = getDriverProfile(paramsDriverSlug)
 
-  if (!driver) throw new Error('Driver not found')
-
-  const data = JSON.parse(driver)
+  const { name, job, alias, description } = driver
 
   return <article className="flex flex-col gap-8">
-    {JSON.stringify(data)}
-    {/* <section className="w-full relative">
-      <img src={`/tracks${image}`} className='w-full aspect-video md:h-60 object-cover' />
-      <div className="absolute inset-0 flex flex-col justify-end gap-2 p-4 bg-slate-900/70">
-        <h1 className='font-semibold text-4xl'>{track}</h1>
-        <p className='text-xs opacity-70'>{location}</p>
-        <p className='text-xs opacity-70'>{date}</p>
-      </div>
-    </section>
-
-    <section className="grid grid-cols-2 grid-row-2 p-2">
-      <article className="flex flex-col col-span-2">
-        <p className="text-center text-xs">ganador</p>
-        <h1 className="uppercase text-center text-xl text-yellow-300">{positions[0]}</h1>
-      </article>
-      <article className="flex flex-col">
-        <p className="text-center text-xs">segundo</p>
-        <h1 className="uppercase text-center text-xl text-gray-300">{positions[1]}</h1>
-      </article>
-      <article className="flex flex-col">
-        <p className="text-center text-xs">tercero</p>
-        <h1 className="uppercase text-center text-xl text-orange-300">{positions[2]}</h1>
+    <section className="flex flex-col md:flex-row gap-4">
+      <img className="w-full md:w-56 h-56 object-cover placeholder animate-enter" alt={paramsDriverSlug} src={`/drivers/${paramsDriverSlug}.webp`} />
+      <article className="flex flex-col justify-end">
+        <p className="text-xl animate-appear">"El {alias}"</p>
+        <h1 className="text-8xl font-logo animate-enter">{name}</h1>
+        <p className="text-gray-400 animate-appear">{job}</p>
       </article>
     </section>
 
-    <RaceChart race={race} /> */}
+    <section>
+      {description.map((paragraph, index) => <p key={index} className="text-gray-300 pb-4 text-lg">{paragraph}</p>)}
+    </section>
   </article>
 }

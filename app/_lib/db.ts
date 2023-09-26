@@ -26,7 +26,7 @@ const pointsByFastlap = 1
 
 const _DATA = 'app/_data'
 const RACES = path.join(_DATA, 'races')
-const DRIVERS = path.join(_DATA, 'races')
+const DRIVERS = path.join(_DATA, 'drivers')
 
 export const getRaces = () => {
   const raceFiles = readdirSync(path.join(process.cwd(), RACES))
@@ -76,3 +76,17 @@ export const getRacers = (races: Race[]) => {
   return racers
 }
 
+export type Driver = {
+  name: string
+  job: string
+  alias: string
+  description: string[]
+}
+
+export const getDriverProfile = (name: string) => {
+  const driver = readFileSync(path.join(process.cwd(), DRIVERS, `${name}.json`), 'utf-8')
+
+  if (!driver) throw new Error('Driver not found')
+
+  return JSON.parse(driver) as Driver
+}
