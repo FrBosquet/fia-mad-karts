@@ -1,4 +1,5 @@
-import { RaceChart } from "@/app/_lib/RaceChart";
+
+import { RaceChart } from "@/app/_components/RaceChart";
 import { getRaces } from "@/app/_lib/db";
 
 export default function Races({ params: { track: paramsTrackName } }: { params: { track: string } }) {

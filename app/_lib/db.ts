@@ -24,11 +24,15 @@ export type Race = {
 const poinstByPosition = [25, 18, 16, 12, 10, 8, 6, 4, 2, 1]
 const pointsByFastlap = 1
 
+const _DATA = 'app/_data'
+const RACES = path.join(_DATA, 'races')
+const DRIVERS = path.join(_DATA, 'races')
+
 export const getRaces = () => {
-  const raceFiles = readdirSync(path.join(process.cwd(), 'races'))
+  const raceFiles = readdirSync(path.join(process.cwd(), RACES))
 
   const races = raceFiles.map((filename) => {
-    return JSON.parse(readFileSync(path.join(process.cwd(), 'races', filename), 'utf8'))
+    return JSON.parse(readFileSync(path.join(process.cwd(), RACES, filename), 'utf8'))
   })
 
   return races as Race[]
