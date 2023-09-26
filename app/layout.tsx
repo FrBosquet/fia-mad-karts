@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import Navbar from './_navbar'
+import { Inter, Kenia } from 'next/font/google'
+import Navbar from './_components/navbar'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
+const kenia = Kenia({ weight: '400', variable: '--font-logo', subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Fia Mad F1 Championship',
-  description: 'FiaMadF1',
+  title: 'MKC',
+  description: 'Madrid Kart Championship: Campeonato de karting de risas',
 }
 
 export default function RootLayout({
@@ -17,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className='dark'>
-      <body className={`${inter.className} bg-slate-800 min-h-screen`}>
+      <body className={`${inter.className} ${kenia.variable} bg-slate-800 min-h-screen`}>
         <Navbar />
         <main className='container m-auto p-4'>
           {children}

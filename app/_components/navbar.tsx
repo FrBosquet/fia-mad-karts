@@ -2,6 +2,7 @@
 
 import { Navbar } from 'flowbite-react';
 import { usePathname } from 'next/navigation';
+import { Logo } from './logo';
 
 export default function DefaultNavbar() {
   const pathname = usePathname()
@@ -13,14 +14,7 @@ export default function DefaultNavbar() {
       <Navbar.Brand
         href="/"
       >
-        <img
-          alt="Flowbite React Logo"
-          className="mr-3 h-6 sm:h-9"
-          src="/kart.svg"
-        />
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-          FIA MADRID F1 CHAMPIONSHIP
-        </span>
+        <Logo className='text-2xl'>MKC</Logo>
       </Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse>
